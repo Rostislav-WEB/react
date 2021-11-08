@@ -3,6 +3,7 @@ import s from './MyPosts.module.css';
 import Post from "./Post/Post";
 
 const MyPosts = () => {
+
     return (
             <div>
                 My posts
@@ -11,7 +12,8 @@ const MyPosts = () => {
                     <button>Add post</button>
                 </div>
                 <div>
-                    <Post />
+                    <Post name='Rostislav' likeCount='15' />
+                    <Post name='Alena' likeCount='20' />
                 </div>
             </div>
     )

@@ -2,6 +2,6 @@
     grid-area: c;
     background-color: cornflowerblue;
   }
-.content img {
-    width: 100%;
+.content__img {
+  width: 100%;
 }
