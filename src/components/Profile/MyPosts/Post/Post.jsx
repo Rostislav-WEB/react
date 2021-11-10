@@ -5,7 +5,7 @@ const Post = (props) => {
     return (
         <div className={s.item}>
             <img src="https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg" />
-            {props.name} 
+            {props.message} 
             <div>
                 <span>LIKE {props.likeCount}</span>
             </div>
