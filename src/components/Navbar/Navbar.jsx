@@ -5,8 +5,6 @@ import Friends from "./Friends/Friends";
 import s from './Navbar.module.css';
 
 const Navbar = (props) => {
-    let friends = props.state.friends
-    .map(f => <Friend name={f.friend} />);
     let activeStyle = {
         color: "red",
     };
@@ -39,7 +37,7 @@ const Navbar = (props) => {
                     }>Settings</NavLink>
                 </div>
             </nav>
-            <Friends friends={friends} />
+            <Friends state={props.state.friends} />
         </div>
     )
 }

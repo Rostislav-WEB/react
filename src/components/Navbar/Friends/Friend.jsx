@@ -4,7 +4,13 @@ import s from './Friends.module.css';
 const Friend = (props) => {
     return (
         <div className={s.dialog}>
-            {props.name}
+            <div>
+                <img className={s.img} src="https://www.meme-arsenal.com/memes/7bdea6754f999b50e9577596f09197fb.jpg" />
+            </div>
+            <div>
+                {props.name}
+            </div>
+
         </div>
 
     )

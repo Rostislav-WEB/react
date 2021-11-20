@@ -22,9 +22,9 @@ let state = {
   },
   sidebar: {
     friends: [
-      {friend: 'Sasha'},
-      {friend: 'Vika'},
-      {friend: 'Elena'}
+      {name: 'Sasha'},
+      {name: 'Vika'},
+      {name: 'Elena'}
     ]
   },
 };
