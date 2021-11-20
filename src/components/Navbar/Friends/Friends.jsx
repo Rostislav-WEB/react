@@ -1,5 +1,4 @@
 import React from "react";
-import Friend from "./Friend";
 import s from './Friends.module.css';
 
 const Friends = (props) => {
@@ -7,7 +6,7 @@ const Friends = (props) => {
         <div className={s.sidebar}>
             <div className={s.item}>Friends</div>
             <div>
-                {props.state}
+                {props.friends}
             </div>
         </div>
 
