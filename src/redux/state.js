@@ -13,13 +13,21 @@ let state = {
       { id: 2, message: "34433434", likesCount: 15 },
       { id: 3, message: "blabla", likesCount: 2323 },
     ],
-
     dialogs: [
-      { id: 1, message: "hohoh" },
-      { id: 2, message: "yoyoy" },
-      { id: 3, message: "yo" },
-      { id: 4, message: "sdds" }
+      { id: 1, name: "hohoh" },
+      { id: 2, name: "yoyoy" },
+      { id: 3, name: "yo" },
+      { id: 4, name: "sdds" }
     ]
-  }
+  },
+  sidebar: {
+    friends: [
+      {friend: 'Sasha'},
+      {friend: 'Vika'},
+      {friend: 'Elena'}
+    ]
+  },
 };
+
+
 export default state;
