@@ -8,8 +8,8 @@ const Friends = (props) => {
 
     return (
         <div className={s.sidebar}>
-            <div className={s.item}>Friends</div>
-            <div>
+            <div className={s.friends}>Friends</div>
+            <div className={s.wrapperFriends}>
                 {friend}
             </div>
         </div>
