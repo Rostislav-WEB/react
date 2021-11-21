@@ -22,16 +22,16 @@ let state = {
   },
   sidebar: {
     friends: [
-      {name: 'Sasha'},
-      {name: 'Vika'},
-      {name: 'Elena'}
+      {name: '1 пидр'},
+      {name: '2 пидр'},
+      {name: '3 пидр'}
     ]
   },
 };
 
 export let addPost = (postMessage) => {
   let newPost = {
-    id: 5, name: postMessage
+     id: 5, message: postMessage, likesCount: 0 
   }
   state.profilePage.posts.push(newPost);
 }
