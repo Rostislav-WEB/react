@@ -10,16 +10,16 @@ let store = {
     },
     dialogsPage: {
       messages: [
-        { id: 1, message: "Dima" },
-        { id: 2, message: "Andrey" },
-        { id: 3, message: "Valera" },
-        { id: 4, message: "Sveta" }
+        { id: 1, message: "qwerty" },
+        { id: 2, message: "qwerty2" },
+        { id: 3, message: "qwerty3" },
+        { id: 4, message: "qwerty4" }
       ],
       dialogs: [
-        { id: 1, name: "hohoh" },
-        { id: 2, name: "yoyoy" },
-        { id: 3, name: "yo" },
-        { id: 4, name: "sdds" }
+        { id: 1, name: "Dima" },
+        { id: 2, name: "Andrey" },
+        { id: 3, name: "Valera" },
+        { id: 4, name: "Sveta" }
       ]
     },
     sidebar: {
