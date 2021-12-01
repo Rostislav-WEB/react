@@ -52,18 +52,6 @@ let store = {
       this.rerenderEntireTree(this._state);
     }
   },
-  addPost ()  {
-    let newPost = {
-       id: 5, message: this._state.profilePage.newPostText, likesCount: 0 
-    }
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = '';
-    this.rerenderEntireTree(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
-    this.rerenderEntireTree(this._state);
-  },
 }
 
 
