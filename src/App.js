@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import { Routes, Route } from "react-router-dom";
+import store from "./redux/state";
 
 const App = (props) => {
   return (
@@ -16,9 +17,7 @@ const App = (props) => {
           <Route
             path="/dialogs"
             element={<Dialogs 
-              state={props.state.dialogsPage}
-              newMessageText={props.state.dialogsPage.newMessageText}
-              dispatch={props.dispatch} 
+              store={props.store}
               />}
           />
           <Route

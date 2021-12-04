@@ -1,7 +1,7 @@
 const ADD_POST = "ADD_POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+const SEND_MESSAGE = "SEND-MESSAGE";
+const UPDATE_NEW_MESSAGE_BODY = "UPDATE-NEW-MESSAGE-BODY";
 let store = {
   _state: {
     profilePage: {
@@ -19,7 +19,7 @@ let store = {
         { id: 3, message: "qwerty3" },
         { id: 4, message: "qwerty4" },
       ],
-      newMessageText: "",
+      newMessageBody: "",
       dialogs: [
         { id: 1, name: "Dima" },
         { id: 2, name: "Andrey" },
@@ -38,7 +38,7 @@ let store = {
     return this._state;
   },
   subscribe(observer) {
-    this.rerenderEntireTree = observer;
+    this._callSubscriber = observer;
   },
   dispatch(action) {
     if (action.type === ADD_POST) {
@@ -49,23 +49,21 @@ let store = {
       };
       this._state.profilePage.posts.push(newPost);
       this._state.profilePage.newPostText = "";
-      this.rerenderEntireTree(this._state);
+      this._callSubscriber(this._state);
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.profilePage.newPostText = action.newText;
-      this.rerenderEntireTree(this._state);
-    }
-
-    if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.dialogsPage.newMessageText = action.newText;
-      this.rerenderEntireTree(this._state);
-    } else if (action.type === ADD_MESSAGE) {
+      this._callSubscriber(this._state);
+    } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+      this._state.dialogsPage.newMessageBody = action.body;
+      this._callSubscriber(this._state);
+    } else if (action.type === SEND_MESSAGE) {
       let newMessage = {
         id: 5,
-        message: this._state.dialogsPage.newMessageText,
+        message: this._state.dialogsPage.newMessageBody,
       };
       this._state.dialogsPage.messages.push(newMessage);
-      this._state.dialogsPage.newMessageText = "";
-      this.rerenderEntireTree(this._state);
+      this._state.dialogsPage.newMessageBody = "";
+      this._callSubscriber(this._state);
     }
   },
 };
@@ -83,16 +81,16 @@ export const updateNewPostTextActionCreator = (text) => {
   };
 };
 
-export const addMessageActionCreator = () => {
+export const sendMessageCreator = () => {
   return {
-    type: ADD_MESSAGE,
+    type: SEND_MESSAGE,
   };
 };
 
-export const updateNewMessageTextActionCreator = (text) => {
+export const updateNewMessageBodyCreator = (text) => {
   return {
-    type: UPDATE_NEW_MESSAGE_TEXT,
-    newText: text,
+    type: UPDATE_NEW_MESSAGE_BODY,
+    body: text,
   };
 };
 
