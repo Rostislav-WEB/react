@@ -14,8 +14,8 @@ const DialogsContainer = (props) => {
     }
 
     return (
-        <Dialogs dialogs={state.dialogs} messages={state.messages}  sendMessage={onSendMessageClick}
-        updateNewMessageBody={onNewMessageChange} newMessageBody={state.newMessageBody}
+        <Dialogs dialogsPage={state}  sendMessage={onSendMessageClick}
+        updateNewMessageBody={onNewMessageChange} 
         />
     );
 };
