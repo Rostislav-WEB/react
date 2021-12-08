@@ -12,7 +12,6 @@ const App = (props) => {
       <Header />
       {/* <Navbar state={props.state.sidebar} /> */}
       <Navbar />
-      <Navbar />
       <div className="app-wrapper-content">
         <Routes>
           <Route path="/dialogs" element={<DialogsContainer />} />
