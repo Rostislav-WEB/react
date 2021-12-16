@@ -13,7 +13,7 @@ const Users = (props) => {
                 props.users.map(user => <div key={user.id}>
                     <span>
                         <div>
-                            <img src={user.photos.small != null ? user.photos.small : userPhoto} alt=""  />
+                            <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="" />
                         </div>
                         <div>
                             {user.followed
@@ -32,4 +32,5 @@ const Users = (props) => {
         </div>
     )
 }
+
 export default Users;
