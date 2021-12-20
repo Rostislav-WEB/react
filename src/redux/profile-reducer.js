@@ -31,7 +31,7 @@ const profileReducer = (state = initialState, action) => {
     case UPDATE_NEW_POST_TEXT:
       return {
         ...state, 
-        newPostText: action.body
+        newPostText: action.newText
       };
 
     default:
@@ -45,10 +45,10 @@ export const addPostActionCreator = () => {
   };
 };
 
-export const updateNewPostTextActionCreator = (text) => {
+export const updateNewPostTextActionCreator = (body) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
-    newText: text,
+    newText: body,
   };
 };
 
