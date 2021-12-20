@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { unFollowAC, followAC, setUsersAC, setCurrentPageAC, totalUsersCountAC, toggleIsFetchingAC } from "../../redux/users-reducer";
+import { unFollow, follow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching } from "../../redux/users-reducer";
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from '../commom/Preloader/Preloader.jsx'
@@ -50,27 +50,33 @@ let mapStateToProps = (state) => {
         isFetching: state.usersPage.isFetching
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (usersId) => {
-            dispatch(followAC(usersId))
-        },
-        unFollow: (usersId) => {
-            dispatch(unFollowAC(usersId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(totalUsersCountAC(totalCount))
-        },
-        toggleIsFetching: (isFetching) => {
-            dispatch(toggleIsFetchingAC(isFetching))
-        }
-    }
-
-}
-export default  connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         follow: (usersId) => {
+//             dispatch(followAC(usersId))
+//         },
+//         unFollow: (usersId) => {
+//             dispatch(unFollowAC(usersId))
+//         },
+//         setUsers: (users) => {
+//             dispatch(setUsersAC(users))
+//         },
+//         setCurrentPage: (pageNumber) => {
+//             dispatch(setCurrentPageAC(pageNumber))
+//         },
+//         setTotalUsersCount: (totalCount) => {
+//             dispatch(totalUsersCountAC(totalCount))
+//         },
+//         toggleIsFetching: (isFetching) => {
+//             dispatch(toggleIsFetchingAC(isFetching))
+//         }
+//     }
+// }
+export default  connect(mapStateToProps, {
+    follow,
+    unFollow,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    toggleIsFetching
+})(UsersContainer);
