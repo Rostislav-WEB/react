@@ -1,11 +1,20 @@
 .header {
-    grid-area: h;
-    background-color: white;
-    margin-bottom: 10px;
-    
-  }
-  .header img {
-    padding-top: 10px;
-    padding-left: 10px;
-    width: 100px;
-  }
+  grid-area: h;
+  background-color: white;
+  margin-bottom: 10px;
+
+}
+
+.header img {
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 100px;
+}
+
+.loginBlock {
+  float: right;
+}
+.loginBlock a {
+  color: white;
+  text-decoration: none;
+}
