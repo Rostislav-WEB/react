@@ -5,12 +5,12 @@ import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/Users/UsersContainer"
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import HeaderContainer from "./components/Header/HeaderContainer";
+import Header from "./components/Header/Header";
 
 const App = (props) => {
   return (
     <div className="app-wrapper">
-      <HeaderContainer />
+      <Header />
       {/* <Navbar state={props.state.sidebar} /> */}
       <Navbar />
       <div className="app-wrapper-content">
