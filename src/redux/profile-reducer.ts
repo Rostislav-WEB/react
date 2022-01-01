@@ -12,7 +12,7 @@ let initialState = {
   profile: null,
 };
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: any) => {
   // let stateCopy = { ...state };
   // stateCopy.posts = [...state.posts];
 
@@ -52,14 +52,14 @@ export const addPost = () => {
   };
 };
 
-export const updateNewPostText = (body) => {
+export const updateNewPostText = (body: string) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
     newText: body,
   };
 };
 
-export const setUsersProfile = (profile) => {
+export const setUsersProfile = (profile: any) => {
   return {
     type: SET_USERS_PROFILE,
     profile: profile,
