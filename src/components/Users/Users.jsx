@@ -13,11 +13,15 @@ const Users = (props) => {
     return (
         <div>
             <div>
-                {pages.map(page => {
-                    return <span key={page.id}
+                {pages.map((page, index) => {
+                //     className={s.linkText} to="/users" style={({ isActive }) =>
+                //     isActive ? activeStyle : undefined
+                // }
+                    return <span key={index}
                         onClick={(e) => { props.onPageChanged(page) }}
-                        className={props.currentPage === page && styles.selectedPage}>
-                        {page}</span>
+                        className={props.currentPage === page ? styles.selectedPage : ''}>
+                        {page}
+                        </span>
                 })}
             </div>
             {
