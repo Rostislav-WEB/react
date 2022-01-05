@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { setUsersProfile } from "../../redux/profile-reducer";
 import { useMatch } from "react-router";
 import { connect } from "react-redux";
@@ -6,19 +6,34 @@ import axios from "axios";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-
-
 const Profile = (props) => {
-    const match = useMatch('/profile/:userId/');
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState([])
+    const match = useMatch('/profile/:userId/')
     useEffect(() => {
-        let userId = match ? match.params.userId : 21535;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`).then(response => {
-          props.setUsersProfile(response.data);
-        });
-    })
+
+        const fetchData = async () => {
+            let userId = match ? match.params.userId : 21535;
+            setLoading(true);
+            try {
+                const { data: response } = await axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`);
+                setData(response);
+            } catch (error) {
+                console.error(error.message);
+            }
+            setLoading(false);
+        }
+        fetchData();
+    }, [])
+
+    // Примечание: пустой массив зависимостей [] означает, что
+    // этот useEffect будет запущен один раз
+    // аналогично componentDidMount()
+
+
     return (
         <div>
-            <ProfileInfo profile={props.profile} />
+            <ProfileInfo data={data} loading={loading} />
             <MyPostsContainer />
         </div>
     )
@@ -29,5 +44,5 @@ const mapStateToProps = (state) => {
         profile: state.profilePage.profile,
     }
 }
-export default connect(mapStateToProps, {setUsersProfile})(Profile);
+export default connect(mapStateToProps, { setUsersProfile })(Profile);
 

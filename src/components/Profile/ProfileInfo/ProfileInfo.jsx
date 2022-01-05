@@ -3,32 +3,32 @@ import Preloader from "../../commom/Preloader/Preloader";
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-    if (!props.profile) {
-        return <Preloader />
 
-    }
     return (
         <div className="profile-info">
-            <div>
-                {/* <img className={s.contentImg} src="https://worksolutions.ru/storage/ATSH21hp662efZ60ujh2VFFBMZoIIsLhhDOp5Vol.png"></img> */}
-            </div>
-            <div className={s.descriptionBlock}>
-                <div>
-                    <img src={props.profile.photos.large} alt="" />
-                </div>
-                <div>
-                    <div>{props.profile.fullName} id:{props.profile.userId}</div>
-                </div>
-                <div>
-                    <div>Github: {props.profile.contacts.github}</div>
-                    <div>VK: {props.profile.contacts.vk != null ? props.profile.contacts.vk: <span>Нету</span> }</div>
-                    <div>youtube: {props.profile.contacts.youtube != null ? props.profile.contacts.youtube: <span>Нету</span> }  </div>
-                </div>
-                <div>
-                    <div>Работа: {props.profile.lookingForAJobDescription}</div>
-                </div>
 
-                Ava + description
+            <div className={s.descriptionBlock}>
+                {props.loading && <Preloader />}
+                {props.loading === false && (
+                    <div>
+                        <div>
+                            <img src={props.data.photos.large} alt="" />
+                        </div>
+                        <div>
+                            <div>{props.data.fullName}</div>
+                            <div>id:{props.data.userId}</div>
+                        </div>
+                        <div>
+                            <div>Github: {props.data.contacts.github != null ? props.data.contacts.github : <span>Нету</span> }</div>
+                            <div>VK: {props.data.contacts.vk != null ? props.data.contacts.vk : <span>Нету</span>}</div>
+                            <div>youtube: {props.data.contacts.youtube != null ? props.data.contacts.youtube : <span>Нету</span>}  </div>
+                        </div>
+                        <div>
+                            <div>Работа: {props.data.lookingForAJobDescription != null ? props.data.contacts.lookingForAJobDescription : <span>Нету</span> }</div>
+                        </div>
+                    </div>
+                )}
+
             </div>
         </div>
 
