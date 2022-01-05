@@ -2,9 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import userPhoto from '../../Accets/images/profile.png'
 import styles from './Users.module.css'
+import { Navigate } from 'react-router-dom';
 
 const Users = (props) => {
-    console.log(props);
+    if (props.isAuth === false) {
+        return <Navigate to="/login/" /> 
+    }
     let pagesCount = Math.ceil((props.totalUsersCount / 150) / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {

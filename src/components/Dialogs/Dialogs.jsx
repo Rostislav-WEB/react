@@ -6,6 +6,11 @@ import { Navigate } from 'react-router-dom';
 
 
 const Dialogs = (props) => {
+
+    if (props.isAuth === false) {
+        return <Navigate to="/login/" /> 
+    }
+    
     let state = props.dialogsPage;
     let dialogsElements = state.dialogs
         .map(d => <DialogItem name={d.name} id={d.id} key={d.id} />);
@@ -20,9 +25,7 @@ const Dialogs = (props) => {
         let body = e.target.value;
         props.updateNewMessageBody(body)
     }
-    if (props.isAuth === false) {
-        return <Navigate to="/login/" /> 
-    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
