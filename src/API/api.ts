@@ -15,11 +15,17 @@ export const usersAPI = {
   },
   followSuccess(userId: number) {
     return instance
-      .post(`follow/${userId}`)
+      .post(`follow/${userId}`);
   },
   unFollowSuccess(userId: number) {
     return instance
-    .delete(`follow/${userId}`)
+    .delete(`follow/${userId}`);
   },
+}
 
+export const authAPI = {
+  me() {
+      return instance
+        .get('auth/me');
+  }
 }
