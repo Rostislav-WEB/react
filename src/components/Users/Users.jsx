@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import userPhoto from '../../Accets/images/profile.png'
 import styles from './Users.module.css'
-import { usersAPI } from '../../API/api';
 
 const Users = (props) => {
+    console.log(props);
     let pagesCount = Math.ceil((props.totalUsersCount / 150) / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -37,26 +37,10 @@ const Users = (props) => {
                         <div>
                             {user.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                                    props.toggleFollowingProgress(true, user.id);
-                                    usersAPI.unFollowSuccess(user.id)
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                props.unFollowSuccess(user.id)
-                                            }
-                                            props.toggleFollowingProgress(false, user.id)
-                                        });
-
-
+                                   props.unFollow(user.id)
                                 }}>Отписаться</button>
                                 : <button disabled={props.followingInProgress.some(id => id === user.id)} onClick={() => {
-                                    props.toggleFollowingProgress(true, user.id);
-                                    usersAPI.followSuccess(user.id)
-                                        .then(response => {
-                                            if (response.data.resultCode === 0) {
-                                                props.followSuccess(user.id)
-                                            }
-                                            props.toggleFollowingProgress(false, user.id)
-                                        })
+                                    props.follow(user.id)
                                 }}>Подписаться</button>}
                         </div>
                     </span>
