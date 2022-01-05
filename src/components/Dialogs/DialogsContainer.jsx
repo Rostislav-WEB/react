@@ -5,18 +5,9 @@ import Dialogs from "./Dialogs";
 let mapStateToProps = (state) => {
     return {
         dialogsPage: state.dialogsPage,
+        isAuth: state.auth.isAuth
     }
 }
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         updateNewMessageBody: (body) => {
-//            dispatch(updateNewMessageBody(body));
-//         },
-//         sendMessage: () => {
-//             dispatch(sendMessage());
-//         },
-//     }
-// }
 const DialogsContainer = connect(mapStateToProps, {
     sendMessage, 
     updateNewMessageBody,

@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import axios from "axios";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import { Navigate } from 'react-router-dom';
 
 const Profile = (props) => {
     const [loading, setLoading] = useState(true);
@@ -26,7 +27,9 @@ const Profile = (props) => {
         fetchData();
     }, [])
 
-
+    if (props.isAuth === false) {
+        return <Navigate to="/login/" /> 
+    }
     // Примечание: пустой массив зависимостей [] означает, что
     // этот useEffect будет запущен один раз
     // аналогично componentDidMount()
@@ -43,6 +46,7 @@ const Profile = (props) => {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        isAuth: state.auth.isAuth
     }
 }
 export default connect(mapStateToProps, { setUsersProfile })(Profile);
