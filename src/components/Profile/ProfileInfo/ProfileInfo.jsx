@@ -3,7 +3,6 @@ import Preloader from "../../commom/Preloader/Preloader";
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
-
     return (
         <div className="profile-info">
 
@@ -24,7 +23,8 @@ const ProfileInfo = (props) => {
                             <div>youtube: {props.data.contacts.youtube != null ? props.data.contacts.youtube : <span>Нету</span>}  </div>
                         </div>
                         <div>
-                            <div>Работа: {props.data.lookingForAJobDescription != null ? props.data.contacts.lookingForAJobDescription : <span>Нету</span> }</div>
+                            <div>Работа: {props.data.lookingForAJobDescription != null ? props.data.lookingForAJobDescription : <span>Нету</span> }</div>
+
                         </div>
                     </div>
                 )}

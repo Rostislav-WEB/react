@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { setUsersProfile } from "../../redux/profile-reducer";
 import { useMatch } from "react-router";
 import { connect } from "react-redux";
@@ -25,6 +25,7 @@ const Profile = (props) => {
         }
         fetchData();
     }, [])
+
 
     // Примечание: пустой массив зависимостей [] означает, что
     // этот useEffect будет запущен один раз
