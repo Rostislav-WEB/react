@@ -1,26 +1,15 @@
-import React, { useEffect } from "react";
-import { setAuthUserData } from "../../redux/auth-reducer";
+import  { useEffect } from "react";
+import { setAuthUserData, getAuthUserData } from "../../redux/auth-reducer";
 import { connect } from "react-redux";
-import axios from "axios";
 import { NavLink } from 'react-router-dom'
 import s from './Header.module.css';
 
-type loginType = {
-    id: number,
-    login: string,
-    email: string
-}
+
+
 
 const Header = (props: any) => {
     useEffect((): void => {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-            withCredentials: true
-        }).then((response: any) => {
-            if (response.data.resultCode === 0) {
-                let { id, login, email }: loginType = response.data.data
-                props.setAuthUserData(id, email, login)
-            }
-        });
+        props.getAuthUserData()
     });
     return (
         <header className={s.header}>
@@ -39,4 +28,4 @@ const mapStateToProps = (state: any) => {
         login: state.auth.login
     }
 }
-export default connect(mapStateToProps, { setAuthUserData })(Header);
+export default connect(mapStateToProps, { setAuthUserData, getAuthUserData })(Header);
