@@ -7,6 +7,7 @@ import axios from "axios";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from "redux";
 
 const Profile = (props) => {
     const [loading, setLoading] = useState(true);
@@ -42,11 +43,13 @@ const Profile = (props) => {
     )
 }
 
+
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
     }
 }
-let authRedirectComponent = withAuthRedirect(Profile)
-export default connect(mapStateToProps, { setUsersProfile })(authRedirectComponent);
-
+export default compose(
+    connect(mapStateToProps, { setUsersProfile }),
+    withAuthRedirect
+)(Profile)
