@@ -1,8 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { connect } from "react-redux";
 import { followSuccess, unFollowSuccess,  setCurrentPage,  toggleFollowingProgress, getUsersThunkCreator, follow, unFollow } from "../../redux/users-reducer";
 import Users from "./Users";
-import Preloader from '../commom/Preloader/Preloader.jsx'
+import Preloader from '../commom/Preloader/Preloader.jsx';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+
 
 class UsersContainer extends React.Component {
 
@@ -12,8 +15,10 @@ class UsersContainer extends React.Component {
     onPageChanged = (pageNumber) => {
         this.props.getUsers(pageNumber, this.props.pageSize)
     }
-    render() {
+    
 
+    render() {
+        let authRedirectComponent = withAuthRedirect(UsersContainer)
         return <>
             {this.props.isFetching ? <Preloader /> : null}
             <Users
@@ -41,10 +46,9 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.auth.isAuth
     }
 }
-
+let authRedirectComponent = withAuthRedirect(UsersContainer)
 export default connect(mapStateToProps, {
     followSuccess,
     unFollowSuccess,
@@ -53,4 +57,4 @@ export default connect(mapStateToProps, {
     getUsers: getUsersThunkCreator,
     follow,
     unFollow
-})(UsersContainer);
+})(authRedirectComponent);
