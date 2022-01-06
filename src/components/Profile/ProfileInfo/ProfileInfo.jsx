@@ -1,5 +1,6 @@
 import React from "react";
 import Preloader from "../../commom/Preloader/Preloader";
+import ProfileStatus from "../ProfileStatus/ProfileStatus";
 import s from './ProfileInfo.module.css';
 
 const ProfileInfo = (props) => {
@@ -17,6 +18,7 @@ const ProfileInfo = (props) => {
                             <div>{props.data.fullName}</div>
                             <div>id:{props.data.userId}</div>
                         </div>
+                        <ProfileStatus />
                         <div>
                             <div>Github: {props.data.contacts.github != null ? props.data.contacts.github : <span>Нету</span> }</div>
                             <div>VK: {props.data.contacts.vk != null ? props.data.contacts.vk : <span>Нету</span>}</div>
