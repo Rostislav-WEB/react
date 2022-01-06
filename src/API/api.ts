@@ -23,6 +23,10 @@ export const usersAPI = {
   },
 }
 
+export const profileAPI = {
+  
+}
+
 export const authAPI = {
   me() {
       return instance
