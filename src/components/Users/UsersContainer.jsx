@@ -18,7 +18,6 @@ class UsersContainer extends React.Component {
     
 
     render() {
-        let authRedirectComponent = withAuthRedirect(UsersContainer)
         return <>
             {this.props.isFetching ? <Preloader /> : null}
             <Users
