@@ -1,35 +1,43 @@
-import { Fragment , useState } from "react"
-
-
-
-const ProfileStatus = (props) => {
-    const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState('Изменить статус')
-    return (
-        <Fragment>
-            {!editMode &&
-                <div>
-                    <span onDoubleClick={() => {
-                        setEditMode(true)
-                    }}>{status}</span>
-                </div>
-            }
-            {editMode && <div>
-                <input autoFocus={true} onBlur={() => {
-                    setEditMode(false)
-                }}
-                    onChange={(e) => {
-                        setStatus(e.target.value)
-                    }}
-                    value={status}>
-                </input>
+import React from 'react'
+import { connect } from 'react-redux'
+import { updateStatus } from "../../../redux/profile-reducer";
+class ProfileStatus extends React.Component {
+    state = {
+        editMode: false,
+        status: this.props.status
+    }
+    activateEditMode = () => {
+        this.setState({ editMode: true })
+    }
+    deactivateEditMode = () => {
+        this.setState({ editMode: false })
+        this.props.updateStatus(this.state.status)
+    }
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        })
+    }
+    render() {
+        return (
+            <div>
+                {!this.state.editMode &&
+                    <div>
+                        <span onDoubleClick={this.activateEditMode}>{!this.props.status  &&  "-------"}</span>
+                    </div>
+                }
+                {this.state.editMode &&
+                    <div>
+                        <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} />
+                    </div>
+                }
             </div>
-            }
-
-        </Fragment>
-
-    )
-
+        )
+    }
 }
-
-export default ProfileStatus
+const mapStateToProps = (state) => {
+    return {
+        status: state.profilePage.status,
+    }
+}
+export default connect(mapStateToProps, { updateStatus })(ProfileStatus)
